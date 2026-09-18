@@ -319,6 +319,20 @@ footer[id] {
   color: var(--color-ink);
 }
 
+.site-header.is-solid .btn {
+  background: var(--color-ink);
+  color: #f4f2ee;
+}
+
+.site-header.is-solid .btn-icon {
+  background: rgb(243 245 243 / 0.14);
+  color: #f4f2ee;
+}
+
+.site-header.is-solid .btn:hover {
+  background: color-mix(in srgb, var(--color-ink) 88%, var(--color-accent));
+}
+
 .site-header-inner {
   display: flex;
   align-items: center;
@@ -341,13 +355,13 @@ footer[id] {
   gap: 1.75rem;
 }
 
-.nav-desktop a {
+.nav-desktop a:not(.btn) {
   color: color-mix(in srgb, var(--color-ink) 78%, transparent);
   font-size: 0.84rem;
   transition: color 0.35s var(--ease);
 }
 
-.nav-desktop a:hover {
+.nav-desktop a:not(.btn):hover {
   color: var(--color-foreground);
 }
 
