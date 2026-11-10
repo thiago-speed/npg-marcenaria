@@ -1,3 +1,5 @@
+/* Use stable viewport heights for page layout so browser toolbars do not resize sections while scrolling.
+   Only the fixed lightbox backdrop follows the dynamic viewport; its content remains stable. */
 @import "tailwindcss";
 @import "@fontsource-variable/outfit";
 
@@ -511,13 +513,13 @@ footer[id] {
 
 .hero-media {
   position: relative;
-  min-height: 70dvh;
+  min-height: 70svh;
 }
 
 .hero-media img {
   width: 100%;
   height: 100%;
-  min-height: 70dvh;
+  min-height: 70svh;
   object-fit: cover;
   object-position: 68% 46%;
   animation: hero-drift 16s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
@@ -1140,7 +1142,7 @@ footer[id] {
   overflow: hidden;
   width: 100%;
   margin: 0;
-  height: min(36dvh, 18rem);
+  height: min(36svh, 18rem);
   background: transparent;
   border-radius: 0;
 }
@@ -2090,13 +2092,13 @@ footer[id] {
 
 .hero.is-split {
   display: grid;
-  min-height: 100dvh;
+  min-height: 100svh;
   color: var(--color-ink);
   background: var(--color-background);
 }
 
 .hero.is-split .hero-media {
-  min-height: 52dvh;
+  min-height: 52svh;
   position: relative;
 }
 
@@ -2254,12 +2256,12 @@ footer[id] {
 
   .hero.is-split .hero-media {
     position: relative;
-    min-height: 100dvh;
+    min-height: 100svh;
   }
 
   .hero.is-split .hero-copy {
     position: relative;
-    min-height: 100dvh;
+    min-height: 100svh;
     justify-content: center;
     padding: 6rem 6vw 4rem;
     background: var(--color-background);
@@ -2374,7 +2376,7 @@ footer[id] {
   overflow: hidden;
   min-width: 0;
   width: 100%;
-  height: min(28dvh, 15.5rem);
+  height: min(28svh, 15.5rem);
   background: transparent;
 }
 
@@ -2623,7 +2625,7 @@ footer[id] {
       minmax(0, 1fr);
     align-items: stretch;
     gap: 0;
-    height: min(30.5dvh, 17.25rem);
+    height: min(30.5svh, 17.25rem);
     overflow: hidden;
   }
 
@@ -2688,7 +2690,7 @@ footer[id] {
 /* NPG art direction: mineral page, case layouts, full-bleed hero */
 
 .hero.is-bleed {
-  min-height: 100dvh;
+  min-height: 100svh;
 }
 
 .hero.is-bleed .hero-media {
@@ -2731,7 +2733,7 @@ footer[id] {
   align-items: stretch;
   position: relative;
   z-index: 2;
-  min-height: 100dvh;
+  min-height: 100svh;
   width: 100%;
   max-width: none;
   margin: 0;
@@ -2908,7 +2910,7 @@ footer[id] {
 .project-case .photo-frame {
   width: 100%;
   aspect-ratio: 4 / 3;
-  max-height: min(40dvh, 21rem);
+  max-height: min(40svh, 21rem);
 }
 
 .is-lead .case-media {
@@ -3011,7 +3013,7 @@ footer[id] {
   width: 100%;
   aspect-ratio: 3 / 4;
   height: auto;
-  max-height: min(64dvh, 34rem);
+  max-height: min(64svh, 34rem);
 }
 
 .materiality-item figcaption,
@@ -3121,7 +3123,7 @@ footer[id] {
   overflow: hidden;
   min-width: 0;
   width: 100%;
-  height: min(28dvh, 15.5rem);
+  height: min(28svh, 15.5rem);
   background: transparent;
 }
 
@@ -3190,7 +3192,7 @@ footer[id] {
   overflow: hidden;
   width: 100%;
   margin: 0;
-  height: min(36dvh, 18rem);
+  height: min(36svh, 18rem);
   background: transparent;
   border-radius: 0;
 }
@@ -3210,7 +3212,7 @@ footer[id] {
 }
 
 .spaces {
-  padding: clamp(2rem, 4dvh, 3rem) 0;
+  padding: clamp(2rem, 4svh, 3rem) 0;
   background: var(--color-ivory);
   color: var(--color-ink);
 }
@@ -3293,7 +3295,7 @@ footer[id] {
 .space-map {
   flex-shrink: 0;
   width: 100%;
-  height: clamp(6rem, 14dvh, 8rem);
+  height: clamp(6rem, 14svh, 8rem);
   margin-top: 0.65rem;
   min-width: 0;
   min-height: 0;
@@ -3426,7 +3428,7 @@ footer[id] {
     color: var(--color-ink);
   }
   .space-location:not(.is-active) { display: none; }
-  .space-photo { aspect-ratio: auto; height: clamp(4.5rem, 12dvh, 6.5rem); }
+  .space-photo { aspect-ratio: auto; height: clamp(4.5rem, 12svh, 6.5rem); }
   .space-photo-placeholder { flex-direction: row; gap: 0.5rem; font-size: 0.8rem; }
   .space-photo-placeholder svg { width: 24px; height: 24px; }
   .space-content { min-height: 12rem; padding: 0.85rem 1rem; }
@@ -3727,7 +3729,7 @@ footer[id] {
 }
 
 .contact-media .photo-frame {
-  height: min(30dvh, 14.5rem);
+  height: min(30svh, 14.5rem);
   min-height: 0;
   border-radius: 0;
 }
@@ -3955,7 +3957,7 @@ footer[id] {
   }
 
   .hero.is-bleed {
-    min-height: 100dvh;
+    min-height: 100svh;
   }
 
   .hero.is-bleed .hero-media {
@@ -4010,7 +4012,7 @@ footer[id] {
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
-    min-height: 100dvh;
+    min-height: 100svh;
     width: 100%;
     margin: 0;
     padding: 0 7.5vw 13vh;
@@ -4087,7 +4089,7 @@ footer[id] {
       minmax(0, 1fr);
     align-items: stretch;
     gap: 0;
-    height: min(30.5dvh, 17.25rem);
+    height: min(30.5svh, 17.25rem);
     overflow: hidden;
   }
 
@@ -4110,7 +4112,7 @@ footer[id] {
     grid-template-columns: minmax(0, 0.82fr) minmax(18rem, 1.2fr) minmax(0, 0.82fr);
     gap: 0;
     align-items: stretch;
-    min-height: min(68dvh, 36rem);
+    min-height: min(68svh, 36rem);
   }
 
   .philosophy-copy {
@@ -4183,7 +4185,7 @@ footer[id] {
 
   .contact {
     grid-template-columns: minmax(0, 0.58fr) minmax(22rem, 0.42fr);
-    height: min(68dvh, 37.5rem);
+    height: min(68svh, 37.5rem);
     min-height: 30.5rem;
     align-items: stretch;
     overflow: hidden;
@@ -4265,11 +4267,11 @@ footer[id] {
 /* Mobile identity: keep desktop families, compressed — not 1-col dumps. */
 @media (max-width: 1023px) {
   .hero.is-bleed {
-    min-height: 100dvh;
+    min-height: 100svh;
   }
 
   .hero.is-bleed .hero-copy {
-    min-height: 100dvh;
+    min-height: 100svh;
     padding: 4.6rem var(--page-pad) 1.15rem;
   }
 
@@ -4341,12 +4343,12 @@ footer[id] {
 
   .project-case .photo-frame {
     aspect-ratio: 4 / 3;
-    max-height: min(28dvh, 14.5rem);
+    max-height: min(28svh, 14.5rem);
   }
 
   .is-lead .case-media .photo-frame {
     aspect-ratio: 4 / 5;
-    max-height: min(36dvh, 17.5rem);
+    max-height: min(36svh, 17.5rem);
   }
 
   .project-pair {
@@ -4357,7 +4359,7 @@ footer[id] {
 
   .project-pair .photo-frame {
     aspect-ratio: 4 / 5;
-    max-height: min(32dvh, 16rem);
+    max-height: min(32svh, 16rem);
   }
 
   .is-narrow {
@@ -4402,7 +4404,7 @@ footer[id] {
 
   .materiality-item .photo-frame {
     aspect-ratio: 3 / 4;
-    max-height: min(36dvh, 16.5rem);
+    max-height: min(36svh, 16.5rem);
   }
 
   .materiality-compose {
@@ -4414,12 +4416,12 @@ footer[id] {
   .materiality-compose .photo-main,
   .materiality-compose .photo-side {
     aspect-ratio: 4 / 5;
-    max-height: min(42dvh, 19.5rem);
+    max-height: min(42svh, 19.5rem);
   }
 
   .execution-grid {
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    grid-template-rows: min(22dvh, 11.25rem) auto;
+    grid-template-rows: min(22svh, 11.25rem) auto;
     align-items: stretch;
   }
 
@@ -4474,7 +4476,7 @@ footer[id] {
   }
 
   .philosophy-media {
-    height: min(38dvh, 18rem);
+    height: min(38svh, 18rem);
     min-height: 0;
   }
 
@@ -4569,7 +4571,7 @@ footer[id] {
   }
 
   .contact-media .photo-frame {
-    height: min(24dvh, 11.5rem);
+    height: min(24svh, 11.5rem);
     min-height: 0;
   }
 
@@ -4653,7 +4655,7 @@ footer[id] {
   }
 
   .project-case .photo-frame {
-    max-height: min(34dvh, 18rem);
+    max-height: min(34svh, 18rem);
   }
 
   .philosophy-grid {
@@ -4661,7 +4663,7 @@ footer[id] {
       minmax(7.25rem, 0.7fr)
       minmax(16rem, 1.2fr)
       minmax(7.25rem, 0.7fr);
-    min-height: min(64dvh, 34rem);
+    min-height: min(64svh, 34rem);
   }
 
   .philosophy-media {
@@ -4682,13 +4684,13 @@ footer[id] {
   }
 
   .contact-media .photo-frame {
-    height: min(28dvh, 14rem);
+    height: min(28svh, 14rem);
   }
 }
 
 /* Repeated gallery driven by one shared offset for autoplay and pointer dragging. */
 .materiality.is-carousel {
-  --detail-height: min(45dvh, 24rem);
+  --detail-height: min(45svh, 24rem);
   --detail-gap: 1rem;
   padding: 3rem 0 2rem;
   overflow: hidden;
@@ -4825,7 +4827,7 @@ footer[id] {
   grid-template-rows: auto minmax(0, 1fr) auto;
   gap: 0.75rem;
   width: min(100%, 48rem);
-  height: min(92dvh, 58rem);
+  height: min(92svh, 58rem);
   max-height: 100%;
   min-width: 0;
 }
@@ -4894,8 +4896,8 @@ footer[id] {
 
 @media (width >= 1024px) {
   .materiality.is-carousel {
-    --detail-height: min(43dvh, 23.5rem);
-    padding: clamp(1.5rem, 4dvh, 3rem) 0 clamp(1.25rem, 3dvh, 2rem);
+    --detail-height: min(43svh, 23.5rem);
+    padding: clamp(1.5rem, 4svh, 3rem) 0 clamp(1.25rem, 3svh, 2rem);
   }
 
   .materiality.is-carousel h2 {
@@ -4911,7 +4913,7 @@ footer[id] {
 }
 
 /* Original editorial hierarchy, with companion views for each environment. */
-.projects.projects-editorial { padding: clamp(2rem, 4dvh, 3rem) 0; }
+.projects.projects-editorial { padding: clamp(2rem, 4svh, 3rem) 0; }
 .projects-editorial .projects-head { margin-bottom: 1.75rem; }
 .projects-editorial .project-case { min-width: 0; margin-bottom: 0; }
 .projects-editorial .is-lead { margin-bottom: 2rem; }
@@ -4919,12 +4921,12 @@ footer[id] {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 0.75rem;
-  height: clamp(17rem, 34dvh, 23rem);
+  height: clamp(17rem, 34svh, 23rem);
   min-width: 0;
 }
 .projects-editorial .is-lead .case-media {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  height: clamp(16rem, 36dvh, 24rem);
+  height: clamp(16rem, 36svh, 24rem);
 }
 .projects-editorial .case-media.is-single { grid-template-columns: minmax(0, 1fr); }
 .projects-editorial .case-media .photo-frame {
@@ -4964,10 +4966,10 @@ footer[id] {
 @media (width < 768px) {
   .projects-editorial .is-lead { margin-bottom: 1.5rem; }
   .projects-editorial .project-pair { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
-  .projects-editorial .case-media { height: clamp(15rem, 34dvh, 20rem); }
+  .projects-editorial .case-media { height: clamp(15rem, 34svh, 20rem); }
   .projects-editorial .is-lead .case-media {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    height: clamp(16rem, 36dvh, 21rem);
+    height: clamp(16rem, 36svh, 21rem);
   }
   .projects-editorial .is-lead .case-copy { text-align: left; }
   .projects-editorial .is-lead .case-blurb { margin-inline: 0; }
