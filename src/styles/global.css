@@ -4482,17 +4482,17 @@ footer[id] {
 
   .philosophy-media:nth-child(1) {
     grid-column: 1;
-    grid-row: 1;
+    grid-row: 2;
   }
 
   .philosophy-media:nth-child(3) {
     grid-column: 2;
-    grid-row: 1;
+    grid-row: 2;
   }
 
   .philosophy-copy {
     grid-column: 1 / -1;
-    grid-row: 2;
+    grid-row: 1;
     padding: 1.7rem 1.25rem 1.9rem;
   }
 
