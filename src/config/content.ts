@@ -107,8 +107,8 @@ export const homeContent = {
         id: "residencial",
         label: "Residencial",
         sector: "Residencial",
-        title: "Cozinha e living",
-        description: "Cozinha, jantar e soluções sob medida para integrar os espaços da casa.",
+        title: "Ambientes integrados",
+        description: "Marcenaria que conecta os espaços e acompanha a forma de viver em cada casa.",
         photos: [
           {
             id: "residencial-arco-original",
@@ -126,7 +126,7 @@ export const homeContent = {
         id: "cozinhas",
         label: "Cozinhas",
         sector: "Residencial",
-        title: "Cozinhas e jantar",
+        title: "Cozinhas",
         description: "Armários e marcenaria que integram cozinha e jantar, com continuidade de materiais e proporções.",
         photos: [
           {
@@ -164,7 +164,7 @@ export const homeContent = {
         id: "dormitorios",
         label: "Dormitórios",
         sector: "Residencial",
-        title: "Dormitórios e closets",
+        title: "Dormitórios",
         description: "Cabeceiras, armários e soluções de apoio que organizam o quarto com uma linguagem contínua.",
         photos: [
           {
@@ -183,7 +183,7 @@ export const homeContent = {
         id: "banheiros",
         label: "Banheiros",
         sector: "Residencial",
-        title: "Banheiros e lavabos",
+        title: "Banheiros",
         description: "Gabinetes, painéis e nichos que aproveitam o espaço com cuidado nos encontros e acabamentos.",
         photos: [
           {
@@ -382,12 +382,12 @@ export const homeContent = {
     ],
     notes: [
       {
-        title: "O ripado acompanha o volume.",
-        body: "A cola segura o encontro. As ripas dobram no canto, no tempo certo.",
+        title: "Da nossa fábrica.",
+        body: "Cada peça é fabricada pela NPG, com cuidado nos materiais, nos encaixes e no acabamento.",
       },
       {
-        title: "O interior também é à medida.",
-        body: "Divisórias e painéis saem da bancada no esquadro do projeto.",
+        title: "Ao seu espaço.",
+        body: "Levamos esse mesmo cuidado à montagem, para que tudo se encaixe no seu ambiente.",
       },
     ],
   },
@@ -583,11 +583,11 @@ export const homeContent = {
       ],
     },
     image: img(
-      "/npg/optimized/cozinha-ilha.webp",
-      "Cozinha contemporânea com ilha e mesa integrada, vista pelo vão da porta.",
-      941,
-      1672,
-      "68% 46%",
+      "/npg/optimized/ambiente-cozinha-cristaleira-iluminada.webp",
+      "Cozinha com marcenaria em madeira, cristaleira iluminada e mesa de jantar.",
+      2400,
+      1600,
+      "62% 54%",
     ),
   },
 
@@ -595,6 +595,13 @@ export const homeContent = {
     mapsCta: "Como chegar",
     whatsappLabel: "WhatsApp",
     instagramLabel: "Instagram",
-    disclaimer: "Demonstração comercial desenvolvida para apresentação.",
+    description: "Marcenaria sob medida, da nossa fábrica ao seu espaço.",
+    navigationTitle: "Explore",
+    locationsTitle: "Nossos espaços",
+    contactTitle: "Fale com a NPG",
+    commercialLabel: "Comercial",
+    supportLabel: "Pós-venda / Financeiro",
+    backToTop: "Voltar ao início",
+    rights: "Todos os direitos reservados.",
   },
 } as const;

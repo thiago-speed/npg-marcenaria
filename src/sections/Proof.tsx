@@ -1,6 +1,6 @@
 import { Star } from "@phosphor-icons/react";
 import { motion, useInView, useReducedMotion } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { homeContent } from "../config/content";
 import { Reveal } from "../components/Reveal";
 import { isMotionEnabled } from "../lib/design";
@@ -11,6 +11,8 @@ export function Proof() {
   const [index, setIndex] = useState(0);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
+  const [dragging, setDragging] = useState(false);
+  const gesture = useRef<{ id: number; x: number; y: number } | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, { amount: 0.3 });
   const reduce = useReducedMotion() || !isMotionEnabled();
@@ -18,11 +20,23 @@ export function Proof() {
   const total = items.length;
 
   useEffect(() => {
-    if (total < 2 || reduce || !inView || hovered || focused) return;
+    if (total < 2 || reduce || !inView || hovered || focused || dragging) return;
     const readingTime = Math.max(9000, current.quote.split(/\s+/).length * 250);
     const timer = window.setTimeout(() => setIndex((value) => (value + 1) % total), readingTime);
     return () => window.clearTimeout(timer);
-  }, [index, total, current, reduce, inView, hovered, focused]);
+  }, [index, total, current, reduce, inView, hovered, focused, dragging]);
+
+  function finishSwipe(event: PointerEvent<HTMLDivElement>) {
+    const start = gesture.current;
+    gesture.current = null;
+    setDragging(false);
+    if (!start || start.id !== event.pointerId || total < 2) return;
+    const dx = event.clientX - start.x;
+    const dy = event.clientY - start.y;
+    if (Math.abs(dx) >= 40 && Math.abs(dx) > Math.abs(dy) * 1.25) {
+      setIndex((value) => (value + (dx < 0 ? 1 : -1) + total) % total);
+    }
+  }
 
   return (
     <section ref={sectionRef} className="proof" aria-label="Feedbacks">
@@ -40,7 +54,26 @@ export function Proof() {
               ))}
             </div>
             <div
-              className="proof-slides"
+              className={`proof-slides${dragging ? " is-dragging" : ""}`}
+              role="region"
+              aria-label="Avaliações dos clientes. Arraste para os lados para navegar."
+              tabIndex={0}
+              onPointerDown={(event) => {
+                if (!event.isPrimary || (event.pointerType === "mouse" && event.button !== 0)) return;
+                gesture.current = { id: event.pointerId, x: event.clientX, y: event.clientY };
+                event.currentTarget.setPointerCapture(event.pointerId);
+                setDragging(true);
+              }}
+              onPointerUp={finishSwipe}
+              onPointerCancel={() => { gesture.current = null; setDragging(false); }}
+              onLostPointerCapture={() => { gesture.current = null; setDragging(false); }}
+              onKeyDown={(event) => {
+                if (total < 2 || (event.key !== "ArrowLeft" && event.key !== "ArrowRight")) return;
+                event.preventDefault();
+                setIndex((value) => (value + (event.key === "ArrowRight" ? 1 : -1) + total) % total);
+              }}
+              onFocus={() => setFocused(true)}
+              onBlur={() => setFocused(false)}
               onMouseEnter={() => setHovered(true)}
               onMouseLeave={() => setHovered(false)}
             >
