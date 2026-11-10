@@ -61,19 +61,23 @@ export const siteConfig = {
   },
 
   seo: {
-    titulo: "NPG Marcenaria | Marcenaria sob medida em Campo Magro",
+    titulo: "NPG Marcenaria | Execução à altura do projeto",
     descricao:
-      "Conheça projetos e soluções em marcenaria sob medida da NPG Marcenaria, em Campo Magro, Paraná.",
+      "Marcenaria sob medida para ambientes residenciais e comerciais, com fabricação própria e cuidado da produção à montagem. Curitiba e Campo Magro.",
     keywords: [
       "NPG Marcenaria",
       "marcenaria sob medida",
       "móveis sob medida",
       "Campo Magro",
+      "marcenaria Curitiba",
       "marcenaria Paraná",
     ],
-    canonical: "",
+    canonical: "https://npgmarcenaria.vercel.app/",
     robots: "noindex, nofollow",
-    imagemCompartilhamento: "/npg/optimized/hero.png",
+    imagemCompartilhamento: "https://npgmarcenaria.vercel.app/npg/og/npg-marcenaria-atual.jpg",
+    imagemAlt: "Cozinha e jantar integrados com marcenaria em madeira, cristaleira e iluminação embutida.",
+    imagemLargura: 2400,
+    imagemAltura: 1600,
     locale: "pt_BR",
   },
 

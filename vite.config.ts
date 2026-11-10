@@ -11,10 +11,14 @@ function htmlMeta() {
       const { seo, empresa } = siteConfig;
       let result = html
         .replaceAll("%SITE_TITLE%", seo.titulo)
+        .replaceAll("%SITE_NAME%", empresa.nome)
         .replaceAll("%SITE_DESCRIPTION%", seo.descricao)
         .replaceAll("%SITE_KEYWORDS%", seo.keywords.join(", "))
         .replaceAll("%SITE_ROBOTS%", seo.robots)
         .replaceAll("%SITE_OG_IMAGE%", seo.imagemCompartilhamento)
+        .replaceAll("%SITE_OG_WIDTH%", String(seo.imagemLargura))
+        .replaceAll("%SITE_OG_HEIGHT%", String(seo.imagemAltura))
+        .replaceAll("%SITE_OG_ALT%", seo.imagemAlt)
         .replaceAll("%SITE_FAVICON%", empresa.favicon)
         .replaceAll("%SITE_CANONICAL%", seo.canonical)
         .replaceAll("%SITE_LOCALE%", seo.locale)
