@@ -3,6 +3,7 @@ import type { MediaImage } from "../config/types";
 type PhotoProps = MediaImage & {
   className?: string;
   priority?: boolean;
+  loading?: "eager" | "lazy";
   objectPosition?: string;
 };
 
@@ -13,6 +14,7 @@ export function Photo({
   height,
   className,
   priority = false,
+  loading,
   objectPosition,
 }: PhotoProps) {
   return (
@@ -23,7 +25,7 @@ export function Photo({
       height={height}
       className={className}
       decoding={priority ? "sync" : "async"}
-      loading={priority ? "eager" : "lazy"}
+      loading={loading ?? (priority ? "eager" : "lazy")}
       fetchPriority={priority ? "high" : "low"}
       style={objectPosition ? { objectPosition } : undefined}
     />

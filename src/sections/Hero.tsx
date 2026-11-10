@@ -2,7 +2,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 import { useRef } from "react";
 import { homeContent } from "../config/content";
 import { siteConfig } from "../config/site";
-import { getContactHref, getContactLabel, isContactExternal } from "../lib/cta";
+import { getContactHref, isContactExternal } from "../lib/cta";
 import { isMotionEnabled } from "../lib/design";
 import { ButtonLink } from "../components/ButtonLink";
 import { Photo } from "../components/Photo";
@@ -12,7 +12,6 @@ const ease = [0.22, 1, 0.36, 1] as const;
 export function Hero() {
   const { hero } = homeContent;
   const contactHref = getContactHref();
-  const contactLabel = getContactLabel();
   const contactExternal = isContactExternal();
   const reduce = useReducedMotion() || !isMotionEnabled();
   const sectionRef = useRef<HTMLElement>(null);
@@ -105,7 +104,7 @@ export function Hero() {
                 target={contactExternal ? "_blank" : undefined}
                 rel={contactExternal ? "noreferrer" : undefined}
               >
-                {contactLabel}
+                {hero.secondaryCta.texto}
               </ButtonLink>
             ) : null}
           </motion.div>

@@ -109,6 +109,7 @@ export const designConfig = {
     faq: false,
     showroom: false,
     qualifier: false,
+    spaces: true,
     contact: true,
   } satisfies Record<SectionKey, boolean>,
 };

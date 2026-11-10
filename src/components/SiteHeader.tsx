@@ -12,7 +12,6 @@ import { isMotionEnabled } from "../lib/design";
 import { getVisibleNav } from "../lib/navigation";
 import { getContactHref, getContactLabel, isContactExternal } from "../lib/cta";
 import { ButtonLink } from "./ButtonLink";
-import { Logo } from "./Logo";
 
 export function SiteHeader() {
   const [solid, setSolid] = useState(false);
@@ -59,8 +58,14 @@ export function SiteHeader() {
         transition={{ duration: 0.7, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
       >
         <div className="site-header-inner">
-          <a href="#topo" aria-label={siteConfig.empresa.nome}>
-            <Logo inverted={!(solid || open)} />
+          <a className="navbar-brand" href="#topo" aria-label={siteConfig.empresa.nome}>
+            <img
+              className="navbar-logo"
+              src={siteConfig.empresa.logoNavbar}
+              alt={siteConfig.empresa.nome}
+              width={170}
+              height={50}
+            />
           </a>
 
           <nav className="nav-desktop" aria-label="Principal">
@@ -69,6 +74,8 @@ export function SiteHeader() {
                 {item.label}
               </a>
             ))}
+          </nav>
+          <div className="header-contact">
             {contactHref ? (
               <ButtonLink
                 href={contactHref}
@@ -78,7 +85,7 @@ export function SiteHeader() {
                 {contactLabel}
               </ButtonLink>
             ) : null}
-          </nav>
+          </div>
 
           <button
             className="menu-toggle"

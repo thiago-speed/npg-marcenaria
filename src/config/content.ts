@@ -4,7 +4,7 @@ import type {
   HeadlineLine,
   MaterialItem,
   MediaImage,
-  Project,
+  PortfolioCategory,
   Review,
 } from "./types.ts";
 import { siteConfig } from "./site.ts";
@@ -27,28 +27,28 @@ export const homeContent = {
   hero: {
     lines: [{ text: "Execução à altura" }, { text: "do projeto." }] satisfies HeadlineLine[],
     subtext:
-      "Mobiliário sob medida para ambientes residenciais e comerciais, com atenção à materialidade e ao acabamento, em Campo Magro.",
+      "Marcenaria sob medida, com fabricação própria e cuidado em cada detalhe.",
     image: img(
-      "/npg/optimized/hero.png",
-      "Cozinha sob medida com armários superiores verdes, bases em madeira e bancada clara.",
-      1254,
-      1254,
-      "48% 52%",
+      "/npg/optimized/ambiente-cozinha-jantar-integrados.webp",
+      "Cozinha e jantar integrados com marcenaria sob medida, mesa de madeira e cristaleira iluminada.",
+      2400,
+      1600,
+      "50% 52%",
     ),
-    objectPositionDesktop: "48% 52%",
-    objectPositionMobile: "48% 48%",
+    objectPositionDesktop: "50% 52%",
+    objectPositionMobile: "50% 52%",
     primaryCta: {
       texto: "Ver projetos",
       href: "#projetos",
     },
     secondaryCta: {
-      texto: "Solicitar orçamento",
-      tipo: "instagram" as const,
+      texto: "Converse com a NPG",
+      tipo: "whatsapp" as const,
       mensagem: "",
     },
   },
 
-  headerCta: "Solicitar orçamento",
+  headerCta: "Vamos conversar",
 
   intro: {
     mark: "NPG.",
@@ -77,8 +77,9 @@ export const homeContent = {
 
   philosophy: {
     title: ["Marcenaria construída", "em torno do projeto."],
-    body: "Mobiliário sob medida para o espaço. Leitura, fabricação e instalação no mesmo cuidado.",
-    after: "Projetos próprios ou com arquitetura e interiores saem prontos para o ambiente.",
+    body: "Desde 2011, unimos o cuidado da marcenaria personalizada à precisão da tecnologia, com fabricação própria e equipe presente da produção à montagem.",
+    after: "Ouvimos cada cliente e acompanhamos cada etapa para que o mobiliário reflita suas escolhas e respeite o projeto.",
+    closing: "Nosso cuidado continua após a montagem, com atendimento próximo, transparência e garantia de cinco anos.",
     imageLeft: img(
       "/npg/optimized/home-office-2.webp",
       "Home office em L, com armários superiores brancos, painel de madeira e bancada iluminada.",
@@ -98,117 +99,258 @@ export const homeContent = {
   projects: {
     kicker: "Execução",
     title: "Ambientes à medida",
-    items: [
+    overview: "Cozinhas, livings, dormitórios, banheiros e espaços comerciais. Uma seleção da marcenaria executada pela NPG.",
+    featuredCategory: "residencial",
+    pairedCategories: ["cozinhas", "dormitorios", "banheiros", "comercial"],
+    categories: [
       {
-        id: "residencial-arco",
-        title: "Residencial",
-        category: "Cozinha e living",
-        blurb: "Cozinha, jantar e uma solução sob medida integrada à parede.",
-        layout: "signature" as const,
-        image: img(
-          "/npg/optimized/jantar-portal.webp",
-          "Sala de jantar vista por um arco, com mesa redonda e cozinha verde ao fundo.",
-          1254,
-          1254,
-          "48% 52%",
-        ),
-        images: [
-          img(
-            "/npg/optimized/playground-gatos.webp",
-            "Playground de gatos em marcenaria, com nichos, prateleiras e rampa.",
-            1129,
-            1393,
-            "50% 36%",
-          ),
+        id: "residencial",
+        label: "Residencial",
+        sector: "Residencial",
+        title: "Cozinha e living",
+        description: "Cozinha, jantar e soluções sob medida para integrar os espaços da casa.",
+        photos: [
+          {
+            id: "residencial-arco-original",
+            label: "Jantar e cozinha vistos pelo arco",
+            image: img("/npg/optimized/jantar-portal.webp", "Sala de jantar vista por um arco, com mesa redonda e cozinha verde ao fundo.", 1254, 1254, "48% 52%"),
+          },
+          {
+            id: "playground-original",
+            label: "Playground de gatos sob medida",
+            image: img("/npg/optimized/playground-gatos.webp", "Playground de gatos em marcenaria, com nichos, prateleiras e rampa.", 1129, 1393, "50% 36%"),
+          },
         ],
       },
       {
-        id: "cristaleira",
-        title: "Cozinha",
-        category: "Residencial",
-        blurb: "Volume de madeira, cristaleira iluminada e estar no mesmo ritmo.",
-        layout: "split" as const,
-        image: img(
-          "/npg/optimized/cozinha-cristaleira.webp",
-          "Cristaleira de madeira com iluminação interna ao lado da cozinha e da mesa.",
-          1087,
-          1446,
-          "68% 38%",
-        ),
+        id: "cozinhas",
+        label: "Cozinhas",
+        sector: "Residencial",
+        title: "Cozinhas e jantar",
+        description: "Armários e marcenaria que integram cozinha e jantar, com continuidade de materiais e proporções.",
+        photos: [
+          {
+            id: "cristaleira-original",
+            label: "Cozinha e cristaleira iluminada",
+            image: img("/npg/optimized/cozinha-cristaleira.webp", "Cristaleira de madeira com iluminação interna ao lado da cozinha e da mesa.", 1087, 1446, "68% 38%"),
+          },
+          {
+            id: "cozinha-frontal",
+            label: "Cozinha e jantar integrados",
+            image: img("/npg/optimized/ambiente-cozinha-mesa-madeira-frontal.webp", "Cozinha planejada com mesa de madeira, armários claros e iluminação integrada.", 2000, 1333),
+          },
+        ],
       },
       {
-        id: "dormitorio",
-        title: "Dormitório",
-        category: "Residencial",
-        blurb: "Guarda-roupa, painel ripado e bancada suspensa.",
-        layout: "bleed" as const,
-        image: img(
-          "/npg/optimized/dormitorio.webp",
-          "Dormitório com guarda-roupa planejado, painel ripado e bancada suspensa.",
-          1544,
-          1018,
-          "42% 50%",
-        ),
+        id: "livings",
+        label: "Livings",
+        sector: "Residencial",
+        title: "Living e integração",
+        description: "Painéis, nichos e mobiliário que conectam o estar aos demais ambientes da casa.",
+        photos: [
+          {
+            id: "living-integrado",
+            label: "Living e cozinha",
+            image: img("/npg/optimized/ambiente-sala-cozinha-integradas.webp", "Living integrado à cozinha, com painel de TV, treliça em madeira e armários claros.", 2000, 1333),
+          },
+          {
+            id: "living-jantar",
+            label: "Jantar e cristaleira",
+            image: img("/npg/optimized/ambiente-jantar-cristaleira.webp", "Sala de jantar com mesa redonda e cristaleira sob medida junto ao estar.", 1200, 1800),
+          },
+        ],
       },
       {
-        id: "comercial-trelica",
+        id: "dormitorios",
+        label: "Dormitórios",
+        sector: "Residencial",
+        title: "Dormitórios e closets",
+        description: "Cabeceiras, armários e soluções de apoio que organizam o quarto com uma linguagem contínua.",
+        photos: [
+          {
+            id: "dormitorio-original",
+            label: "Dormitório com marcenaria planejada",
+            image: img("/npg/optimized/dormitorio.webp", "Dormitório com guarda-roupa planejado, painel ripado e bancada suspensa.", 1544, 1018, "42% 50%"),
+          },
+          {
+            id: "dormitorio-closet",
+            label: "Quarto e acesso ao closet",
+            image: img("/npg/optimized/ambiente-quarto-acesso-closet.webp", "Quarto com espelho de contorno arredondado e marcenaria no acesso ao closet.", 1200, 1800),
+          },
+        ],
+      },
+      {
+        id: "banheiros",
+        label: "Banheiros",
+        sector: "Residencial",
+        title: "Banheiros e lavabos",
+        description: "Gabinetes, painéis e nichos que aproveitam o espaço com cuidado nos encontros e acabamentos.",
+        photos: [
+          {
+            id: "lavabo-escuro",
+            label: "Lavabo com madeira e luz",
+            image: img("/npg/optimized/ambiente-lavabo-bancada-escura.webp", "Lavabo com marcenaria em madeira, espelho iluminado e bancada escura.", 1200, 1800),
+          },
+        ],
+      },
+      {
+        id: "gourmet",
+        label: "Gourmet",
+        sector: "Residencial",
+        title: "Espaços de convívio",
+        description: "Marcenaria para preparar, receber e compartilhar, integrada à área gourmet.",
+        photos: [
+          {
+            id: "gourmet-churrasqueira",
+            label: "Área gourmet",
+            image: img("/npg/optimized/ambiente-area-gourmet-churrasqueira.webp", "Área gourmet com armários planejados claros, bancada curva e churrasqueira.", 2000, 1333),
+          },
+          {
+            id: "gourmet-bar",
+            label: "Bar e bancada de apoio",
+            image: img("/npg/optimized/ambiente-area-gourmet-bar.webp", "Área de bar com bancada de madeira, banquetas e painel de pedra ao fundo.", 1200, 1800),
+          },
+        ],
+      },
+      {
+        id: "comercial",
+        label: "Comercial",
+        sector: "Comercial",
         title: "Comercial",
-        category: "Treliça e bancos",
-        blurb: "Treliça de madeira, bancos e mesas para o ponto comercial.",
-        layout: "bleed" as const,
-        image: img(
-          "/npg/optimized/comercial-trelica.webp",
-          "Salão comercial com treliça de madeira no teto e bancos sob medida.",
-          1119,
-          1406,
-          "50% 28%",
-        ),
+        description: "Treliças, bancos e mobiliário sob medida para compor espaços comerciais com identidade.",
+        photos: [
+          {
+            id: "comercial-trelica",
+            label: "Treliça e mobiliário comercial",
+            image: img("/npg/optimized/comercial-trelica.webp", "Salão comercial com treliça de madeira no teto, bancos e mesas sob medida.", 1119, 1406),
+          },
+        ],
       },
-    ] satisfies Project[],
+    ] satisfies PortfolioCategory[],
   },
 
   materiality: {
     title: "Detalhes que definem o resultado.",
-    body: "Encontros de madeira, espelho e luz resolvidos na medida de cada ambiente.",
+    body: "Na NPG, cada detalhe é pensado para que a marcenaria faça parte do ambiente, com harmonia e precisão.",
     items: [
       {
-        id: "ripado",
+        id: "ripado-original",
         label: "Ripado e encontro com espelho",
+        image: img("/npg/optimized/living-ripado.webp", "Painel ripado de madeira ao lado de espelho e marcenaria iluminada.", 937, 1679, "26% 42%"),
+      },
+      {
+        id: "movel-canto-arredondado",
+        label: "Canto arredondado",
         image: img(
-          "/npg/optimized/living-ripado.webp",
-          "Painel ripado de madeira ao lado de espelho e marcenaria iluminada.",
-          937,
-          1679,
-          "26% 42%",
+          "/npg/optimized/detalhe-movel-canto-arredondado.webp",
+          "Detalhe da curva de um móvel em madeira, com frente ripada.",
+          933,
+          1400,
         ),
       },
       {
-        id: "trelica",
+        id: "cristaleira-tacas",
+        label: "Cristaleira iluminada",
+        image: img(
+          "/npg/optimized/detalhe-cristaleira-tacas.webp",
+          "Prateleiras de vidro com taças e iluminação junto à marcenaria.",
+          933,
+          1400,
+        ),
+      },
+      {
+        id: "cabeceira-criado-mudo",
+        label: "Encaixes e proporções",
+        image: img(
+          "/npg/optimized/detalhe-cabeceira-criado-mudo.webp",
+          "Criado-mudo sob medida integrado ao painel da cabeceira.",
+          933,
+          1400,
+        ),
+      },
+      {
+        id: "trelica-original",
         label: "Painel com treliça",
+        image: img("/npg/optimized/living-trelica.webp", "Painel de living em madeira clara com treliça, nichos e gabinetes.", 945, 1664, "55% 40%"),
+      },
+      {
+        id: "painel-armario-iluminado",
+        label: "Madeira e luz",
         image: img(
-          "/npg/optimized/living-trelica.webp",
-          "Painel de living em madeira clara com treliça, nichos e gabinetes.",
-          945,
-          1664,
-          "55% 40%",
+          "/npg/optimized/detalhe-painel-armario-iluminado.webp",
+          "Encontro entre painel de madeira, armário e iluminação embutida.",
+          933,
+          1400,
         ),
       },
       {
-        id: "forro",
-        label: "Forro e encontro iluminado",
+        id: "lavabo-gabinete-ripado",
+        label: "Ripado e espelho",
         image: img(
-          "/npg/optimized/banheiro-forro.webp",
-          "Gabinete planejado com forro de madeira e LED no encontro com o espelho.",
-          1080,
-          1456,
-          "32% 48%",
+          "/npg/optimized/detalhe-lavabo-gabinete-ripado.webp",
+          "Gabinete ripado de lavabo junto à bancada e ao espelho iluminado.",
+          933,
+          1400,
         ),
-        detail: img(
-          "/npg/optimized/banheiro-detalhe.webp",
-          "Detalhe do encontro entre forro de madeira, espelho e fita de LED.",
-          1084,
-          1451,
-          "50% 50%",
+      },
+      {
+        id: "cabeceira-ripada-armario",
+        label: "Textura e continuidade",
+        image: img(
+          "/npg/optimized/detalhe-cabeceira-ripada-armario.webp",
+          "Encontro entre cabeceira ripada, painel de madeira e armário.",
+          933,
+          1400,
+        ),
+      },
+      {
+        id: "forro-original",
+        label: "Forro e encontro iluminado",
+        image: img("/npg/optimized/banheiro-forro.webp", "Gabinete planejado com forro de madeira e LED no encontro com o espelho.", 1080, 1456, "32% 48%"),
+      },
+      {
+        id: "cantinho-cafe-iluminado",
+        label: "Nichos e iluminação",
+        image: img(
+          "/npg/optimized/detalhe-cantinho-cafe-iluminado.webp",
+          "Prateleiras iluminadas e bancada de um cantinho do café em madeira.",
+          933,
+          1400,
+        ),
+      },
+      {
+        id: "painel-tv-vazado-lateral",
+        label: "Treliça em madeira",
+        image: img(
+          "/npg/optimized/detalhe-painel-tv-vazado-lateral.webp",
+          "Vista lateral de painel vazado com treliça de madeira e gabinete.",
+          933,
+          1400,
+        ),
+      },
+      {
+        id: "lavabo-bancada-verde",
+        label: "Encontro de materiais",
+        image: img(
+          "/npg/optimized/detalhe-lavabo-bancada-verde.webp",
+          "Painel de madeira com espelho curvo junto à bancada verde do lavabo.",
+          933,
+          1400,
+        ),
+      },
+      {
+        id: "encontro-original",
+        label: "Madeira, espelho e luz",
+        image: img("/npg/optimized/banheiro-detalhe.webp", "Detalhe do encontro entre forro de madeira, espelho e fita de LED.", 1084, 1451),
+      },
+      {
+        id: "cabeceira-mesa-estudo",
+        label: "Detalhes integrados",
+        image: img(
+          "/npg/optimized/detalhe-cabeceira-mesa-estudo.webp",
+          "Bancada de estudo integrada à cabeceira ripada com iluminação linear.",
+          933,
+          1400,
         ),
       },
     ] satisfies MaterialItem[],
@@ -307,8 +449,7 @@ export const homeContent = {
 
   proof: {
     title: "Feedbacks",
-    body: "Quem já convive com o móvel deixa recado no Google.",
-    instagramCta: "Ver no Instagram",
+    body: "O que nossos clientes dizem sobre a NPG.",
     items: [
       {
         author: "Mara Lucia Muniz Amador",
@@ -377,6 +518,33 @@ export const homeContent = {
     timings: [],
   },
 
+  spaces: {
+    title: "Nossos Espaços",
+    introduction: "Venha tomar um café com a gente e dar o primeiro passo para o seu próximo projeto.",
+    locations: {
+      fabrica: {
+        photoPlaceholder: "Foto da fábrica em breve",
+        description: "Onde o projeto ganha forma, com fabricação própria, tecnologia e o cuidado da nossa equipe em cada etapa.",
+        image: null as MediaImage | null,
+      },
+      escritorio: {
+        photoPlaceholder: "Foto do escritório em breve",
+        description: "Um espaço dedicado à conversa, às escolhas e aos detalhes que orientam cada projeto de marcenaria.",
+        image: null as MediaImage | null,
+      },
+    },
+    mapsCta: "Abrir no mapas",
+    contactsTitle: "Fale com a NPG",
+    commercialLabel: "Comercial",
+    supportLabel: "Pós-venda / Financeiro",
+    hoursTitle: "Horário de atendimento",
+    hours: [
+      { days: "Segunda a quinta", time: "7h30–12h / 13h–17h" },
+      { days: "Sexta", time: "7h30–12h / 13h–16h30" },
+      { days: "Sábados", time: "Fechado" },
+    ],
+  },
+
   contact: {
     title: "Seu projeto pede uma execução à altura?",
     body: "Converse com a NPG sobre a marcenaria do ambiente.",
@@ -427,7 +595,6 @@ export const homeContent = {
     mapsCta: "Como chegar",
     whatsappLabel: "WhatsApp",
     instagramLabel: "Instagram",
-    disclaimer:
-      "Demonstração comercial desenvolvida para apresentação. Telefone, WhatsApp, e-mail e endereço completo serão publicados após confirmação.",
+    disclaimer: "Demonstração comercial desenvolvida para apresentação.",
   },
 } as const;

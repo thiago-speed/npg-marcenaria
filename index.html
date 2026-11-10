@@ -10,6 +10,7 @@
     <link rel="canonical" href="%SITE_CANONICAL%" />
     <link rel="icon" type="image/png" href="%SITE_FAVICON%" />
     <link rel="preload" as="image" href="%SITE_HERO%" fetchpriority="high" />
+    <link rel="preload" as="image" href="%SITE_LOADING_IMAGE%" fetchpriority="high" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="%SITE_LOCALE%" />
     <meta property="og:title" content="%SITE_TITLE%" />
@@ -19,9 +20,70 @@
     <meta name="twitter:title" content="%SITE_TITLE%" />
     <meta name="twitter:description" content="%SITE_DESCRIPTION%" />
     <meta name="twitter:image" content="%SITE_OG_IMAGE%" />
+    <style>
+      html.is-loading,
+      html.is-loading body { overflow: hidden; }
+      .site-loader {
+        position: fixed;
+        inset: 0;
+        z-index: var(--z-loader, 70);
+        display: grid;
+        place-items: center;
+        isolation: isolate;
+        touch-action: none;
+      }
+      .site-loader::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: #12151a;
+        transition: opacity 350ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .site-loader[hidden] { display: none; }
+      .site-loader img {
+        display: block;
+        width: clamp(140px, 15vw, 180px);
+        max-width: 50vw;
+        height: auto;
+        transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .site-loader.is-leaving { pointer-events: none; }
+      .site-loader.is-leaving::before { opacity: 0; }
+      .site-loader.is-leaving img { opacity: 0; transition-delay: 30ms; }
+      @media (prefers-reduced-motion: reduce) {
+        .site-loader::before, .site-loader img { transition: none; }
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
+    <div id="site-loader" class="site-loader" role="status" aria-label="Carregando NPG Marcenaria" hidden>
+      <img width="360" height="326" alt="" decoding="sync" fetchpriority="high"
+        data-animation="%SITE_LOADING_IMAGE%" data-still="%SITE_LOADING_STILL%" />
+    </div>
+    <script>
+      (() => {
+        const overlay = document.getElementById("site-loader");
+        const root = document.getElementById("root");
+        overlay.dataset.startedAt = String(performance.now());
+        const image = overlay.querySelector("img");
+        const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        image.src = reduce ? image.dataset.still : image.dataset.animation;
+        overlay.hidden = false;
+        root.inert = true;
+        root.setAttribute("aria-busy", "true");
+        document.documentElement.classList.add("is-loading");
+
+        // Fail open even if the application bundle fails to initialize.
+        overlay.dataset.failsafe = String(setTimeout(() => {
+          overlay.remove();
+          root.inert = false;
+          root.removeAttribute("aria-busy");
+          document.documentElement.classList.remove("is-loading");
+        }, 8000));
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

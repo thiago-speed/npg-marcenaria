@@ -18,6 +18,7 @@ export function Philosophy() {
           </h2>
           <p>{philosophy.body}</p>
           <p>{philosophy.after}</p>
+          <p>{philosophy.closing}</p>
         </Reveal>
         <Reveal delay={0.12} className="philosophy-media" from="right">
           <Photo {...philosophy.image} objectPosition={philosophy.image.objectPosition} />

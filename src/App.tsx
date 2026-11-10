@@ -13,6 +13,7 @@ import { Materiality } from "./sections/Materiality";
 import { Philosophy } from "./sections/Philosophy";
 import { Projects } from "./sections/Projects";
 import { Proof } from "./sections/Proof";
+import { Spaces } from "./sections/Spaces";
 
 export default function App() {
   const { sections } = resolvedDesign();
@@ -34,6 +35,7 @@ export default function App() {
         {sections.philosophy ? <Philosophy /> : null}
         {sections.proof ? <Proof /> : null}
         {sections.atmosphere ? <Atmosphere /> : null}
+        {sections.spaces ? <Spaces /> : null}
         {sections.contact ? <Contact /> : null}
       </main>
       <SiteFooter />

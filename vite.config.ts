@@ -19,6 +19,9 @@ function htmlMeta() {
         .replaceAll("%SITE_CANONICAL%", seo.canonical)
         .replaceAll("%SITE_LOCALE%", seo.locale)
         .replaceAll("%SITE_HERO%", homeContent.hero.image.src);
+      result = result
+        .replaceAll("%SITE_LOADING_IMAGE%", empresa.logoLoading)
+        .replaceAll("%SITE_LOADING_STILL%", empresa.logoClaro);
 
       if (!seo.canonical) {
         result = result.replace(/\s*<link rel="canonical"[^>]*>/, "");

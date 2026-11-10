@@ -3,6 +3,8 @@ import { ArrowRight, CaretRight } from "@phosphor-icons/react";
 import { useState } from "react";
 import { homeContent } from "../config/content";
 import { isMotionEnabled } from "../lib/design";
+import { getWhatsAppLink } from "../lib/whatsapp";
+import { siteConfig } from "../config/site";
 
 export function ContactQuiz() {
   const { contact } = homeContent;
@@ -25,6 +27,10 @@ export function ContactQuiz() {
   };
 
   const recap = answers.filter(Boolean).join(", ");
+  const contactHref = getWhatsAppLink([
+    siteConfig.contato.mensagemPadrao,
+    ...questions.map((question, index) => `${question.prompt} ${answers[index]}`),
+  ].join("\n\n"));
 
   return (
     <div className="contact-quiz">
@@ -39,12 +45,12 @@ export function ContactQuiz() {
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           >
             <p className="contact-quiz-recap">{recap}.</p>
-            <button type="button" className="btn" onClick={() => undefined}>
+            <a className="btn" href={contactHref} target="_blank" rel="noreferrer">
               {contact.cta}
               <span className="btn-icon" aria-hidden="true">
                 <ArrowRight size={14} weight="light" />
               </span>
-            </button>
+            </a>
             <button type="button" className="contact-quiz-back" onClick={() => setStep(total - 1)}>
               {contact.quiz.back}
             </button>

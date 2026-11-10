@@ -29,6 +29,7 @@ export type SectionKey =
   | "faq"
   | "showroom"
   | "qualifier"
+  | "spaces"
   | "contact";
 
 export type EnvironmentLayout = "split" | "bleed" | "overlap" | "overlay";
@@ -62,6 +63,15 @@ export type MaterialItem = {
   label: string;
   image: MediaImage;
   detail?: MediaImage;
+};
+
+export type PortfolioCategory = {
+  id: string;
+  label: string;
+  sector: "Residencial" | "Comercial";
+  title: string;
+  description: string;
+  photos: readonly MaterialItem[];
 };
 
 export type ProofTheme = {

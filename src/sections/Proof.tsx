@@ -1,34 +1,35 @@
-import { CaretLeft, CaretRight, Star } from "@phosphor-icons/react";
-import { useState } from "react";
+import { Star } from "@phosphor-icons/react";
+import { motion, useInView, useReducedMotion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 import { homeContent } from "../config/content";
-import { siteConfig } from "../config/site";
-import { ButtonLink } from "../components/ButtonLink";
 import { Reveal } from "../components/Reveal";
+import { isMotionEnabled } from "../lib/design";
 
 export function Proof() {
   const { proof } = homeContent;
   const items = proof.items;
   const [index, setIndex] = useState(0);
-  const instagram = siteConfig.redesSociais.instagram;
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef, { amount: 0.3 });
+  const reduce = useReducedMotion() || !isMotionEnabled();
   const current = items[index];
   const total = items.length;
 
-  const go = (direction: -1 | 1) => {
-    if (!total) return;
-    setIndex((value) => (value + direction + total) % total);
-  };
+  useEffect(() => {
+    if (total < 2 || reduce || !inView || hovered || focused) return;
+    const readingTime = Math.max(9000, current.quote.split(/\s+/).length * 250);
+    const timer = window.setTimeout(() => setIndex((value) => (value + 1) % total), readingTime);
+    return () => window.clearTimeout(timer);
+  }, [index, total, current, reduce, inView, hovered, focused]);
 
   return (
-    <section className="proof" aria-label="Feedbacks">
+    <section ref={sectionRef} className="proof" aria-label="Feedbacks">
       <div className="wrap proof-grid">
         <Reveal className="proof-lead" from="left">
           <h2 className="display">{proof.title}</h2>
           <p className="proof-body">{proof.body}</p>
-          {instagram ? (
-            <ButtonLink href={instagram} variant="ghost" target="_blank" rel="noreferrer">
-              {proof.instagramCta}
-            </ButtonLink>
-          ) : null}
         </Reveal>
 
         {current ? (
@@ -38,24 +39,49 @@ export function Proof() {
                 <Star key={star} size={16} weight="fill" />
               ))}
             </div>
-            <blockquote className="proof-quote" aria-live="polite">
-              <p>{current.quote}</p>
-              <footer>
-                <cite>{current.author}</cite>
-                <span>{current.source}</span>
-              </footer>
-            </blockquote>
+            <div
+              className="proof-slides"
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+            >
+              {items.map((item, slide) => (
+                <motion.blockquote
+                  className="proof-quote"
+                  key={item.author}
+                  aria-hidden={slide !== index}
+                  initial={false}
+                  animate={{ opacity: slide === index ? 1 : 0, y: reduce || slide === index ? 0 : 6 }}
+                  transition={{ duration: reduce ? 0 : 0.45, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <p>{item.quote}</p>
+                  <footer>
+                    <cite>{item.author}</cite>
+                    <span>{item.source}</span>
+                  </footer>
+                </motion.blockquote>
+              ))}
+            </div>
             {total > 1 ? (
-              <div className="proof-nav">
-                <button type="button" onClick={() => go(-1)} aria-label="Anterior">
-                  <CaretLeft size={16} />
-                </button>
-                <span>
-                  {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-                </span>
-                <button type="button" onClick={() => go(1)} aria-label="Próximo">
-                  <CaretRight size={16} />
-                </button>
+              <div
+                className="proof-dots"
+                role="group"
+                aria-label="Escolher avaliação"
+                onFocusCapture={() => setFocused(true)}
+                onBlurCapture={(event) => {
+                  if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false);
+                }}
+              >
+                {items.map((item, dot) => (
+                  <button
+                    key={item.author}
+                    type="button"
+                    onClick={() => setIndex(dot)}
+                    aria-label={`Avaliação ${dot + 1} de ${total}: ${item.author}`}
+                    aria-current={dot === index ? "true" : undefined}
+                  >
+                    <span aria-hidden="true" />
+                  </button>
+                ))}
               </div>
             ) : null}
           </Reveal>
