@@ -56,7 +56,7 @@ export function Spaces() {
                   </div>
                   <div className="space-content">
                     <div className="space-heading">
-                      <h3 id={`space-${space.id}`}>{space.nome}</h3>
+                      <h3 id={`space-${space.id}`}>{space.nome} - {siteConfig.empresa.nomeCurto}</h3>
                       <SpaceIcon size={32} weight="light" aria-hidden="true" />
                     </div>
                     <p className="space-description">{details.description}</p>

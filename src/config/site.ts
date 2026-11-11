@@ -16,6 +16,11 @@ export const siteConfig = {
     appleTouchIcon: "/apple-touch-icon.png?v=3",
   },
 
+  desenvolvedor: {
+    nome: "Thiago Bernardino",
+    whatsapp: "5541995902291",
+  },
+
   contato: {
     telefone: "(41) 99780-0782",
     telefoneDigitos: "5541997800782",
@@ -37,20 +42,20 @@ export const siteConfig = {
 
   espacos: [
     {
-      id: "fabrica",
-      nome: "Fábrica",
-      endereco: "Rua Expedicionario Andre L Aleis, 310",
-      complemento: "2ª entrada, Barracão 06",
-      localidade: "Campo Magro - PR",
-      cep: "83535-000",
-    },
-    {
       id: "escritorio",
       nome: "Escritório",
       endereco: "R. Dep. Heitor Alencar Furtado, 3350",
       complemento: "Edifício Opus One, Sala 605",
       localidade: "Curitiba - PR",
       cep: "81200-110",
+    },
+    {
+      id: "fabrica",
+      nome: "Fábrica",
+      endereco: "Rua Expedicionario Andre L Aleis, 310",
+      complemento: "2ª entrada, Barracão 06",
+      localidade: "Campo Magro - PR",
+      cep: "83535-000",
     },
   ],
 
@@ -94,5 +99,5 @@ export const siteConfig = {
 export const defaultNav: NavItem[] = [
   { label: "Ambientes", href: "#projetos", section: "projects" },
   { label: "A NPG", href: "#sobre", section: "philosophy" },
-  { label: "Contato", href: "#contato", section: "contact" },
+  { label: "Contato", href: "#espacos", section: "spaces" },
 ];

@@ -18,7 +18,6 @@ export function Contact() {
           <h2 className="display">{contact.title}</h2>
           <p>{contact.body}</p>
           <ContactQuiz />
-          <p className="contact-location">{contact.locationLabel}</p>
         </Reveal>
       </div>
     </section>

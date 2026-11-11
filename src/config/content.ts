@@ -561,7 +561,6 @@ export const homeContent = {
     title: "Seu projeto pede uma execução à altura?",
     body: "Converse com a NPG sobre a marcenaria do ambiente.",
     cta: "Enviar para a NPG!",
-    locationLabel: "Campo Magro - PR",
     quiz: {
       back: "Voltar",
       instruction: "Selecione uma opção para continuar.",
@@ -616,5 +615,6 @@ export const homeContent = {
     supportLabel: "Pós-venda / Financeiro",
     backToTop: "Voltar ao início",
     rights: "Todos os direitos reservados.",
+    developerPrefix: "Desenvolvido por",
   },
 } as const;

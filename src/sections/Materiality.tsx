@@ -19,10 +19,14 @@ export function Materiality() {
     startX: number;
     startY: number;
     lastX: number;
+    lastTime: number;
+    velocity: number;
     active: boolean;
     moved: boolean;
   } | null>(null);
   const resumeAt = useRef(0);
+  const velocity = useRef(0);
+  const direction = useRef(-1);
   const suppressClickUntil = useRef(0);
   const [dragging, setDragging] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -43,9 +47,16 @@ export function Materiality() {
   }, [x]);
 
   useAnimationFrame((_, delta) => {
-    if (reduce || !inView || selectedIndex !== null || drag.current || performance.now() < resumeAt.current) return;
+    if (reduce || !inView || selectedIndex !== null || drag.current?.active || performance.now() < resumeAt.current) return;
+    const elapsed = Math.min(delta, 50);
+    const cruisingVelocity = direction.current * groupWidth.current / 140000;
+    // Integrate the easing so release momentum blends into autoplay without a stop.
+    const decay = Math.exp(-elapsed / 600);
+    const distance = cruisingVelocity * elapsed
+      + (velocity.current - cruisingVelocity) * 600 * (1 - decay);
+    velocity.current = cruisingVelocity + (velocity.current - cruisingVelocity) * decay;
     x.set(wrapCarouselOffset(
-      x.get() - (groupWidth.current / 140000) * Math.min(delta, 50),
+      x.get() + distance,
       groupWidth.current,
     ));
   });
@@ -57,6 +68,8 @@ export function Materiality() {
       startX: event.clientX,
       startY: event.clientY,
       lastX: event.clientX,
+      lastTime: event.timeStamp,
+      velocity: 0,
       active: false,
       moved: false,
     };
@@ -80,16 +93,34 @@ export function Materiality() {
       pointer.active = true;
       setDragging(true);
     }
-    x.set(wrapCarouselOffset(x.get() + event.clientX - pointer.lastX, groupWidth.current));
+    const distance = event.clientX - pointer.lastX;
+    const elapsed = event.timeStamp - pointer.lastTime;
+    if (elapsed > 0) {
+      const sample = Math.max(-2.5, Math.min(2.5, distance / elapsed));
+      pointer.velocity += (sample - pointer.velocity) * (1 - Math.exp(-elapsed / 35));
+    }
+    x.set(wrapCarouselOffset(x.get() + distance, groupWidth.current));
     pointer.lastX = event.clientX;
+    pointer.lastTime = event.timeStamp;
   };
 
   const endDrag = (event: PointerEvent<HTMLDivElement>) => {
     if (drag.current?.id !== event.pointerId) return;
-    if (drag.current.moved) suppressClickUntil.current = performance.now() + 250;
+    const pointer = drag.current;
+    if (pointer.moved) suppressClickUntil.current = performance.now() + 250;
+    if (pointer.active) {
+      const releaseVelocity = event.type === "pointerup"
+        ? pointer.velocity * Math.exp(-Math.max(0, event.timeStamp - pointer.lastTime) / 100)
+        : 0;
+      if (Math.abs(releaseVelocity) > 0.01) direction.current = Math.sign(releaseVelocity);
+      const cruisingVelocity = direction.current * groupWidth.current / 140000;
+      velocity.current = Math.abs(releaseVelocity) > Math.abs(cruisingVelocity)
+        ? releaseVelocity
+        : cruisingVelocity;
+      resumeAt.current = 0;
+    }
     drag.current = null;
     setDragging(false);
-    resumeAt.current = performance.now() + 1200;
     if (event.currentTarget.hasPointerCapture(event.pointerId)) {
       event.currentTarget.releasePointerCapture(event.pointerId);
     }

@@ -6,8 +6,10 @@ import { getWhatsAppLink } from "../lib/whatsapp";
 import { Reveal } from "./Reveal";
 
 export function SiteFooter() {
-  const { empresa, contato, espacos, redesSociais } = siteConfig;
+  const { empresa, contato, espacos, redesSociais, desenvolvedor } = siteConfig;
   const { footer } = homeContent;
+  const developerMessage = `Olá, Thiago! Vim pelo site da ${empresa.nome} e gostaria de conversar sobre um site.`;
+  const developerHref = `https://wa.me/${desenvolvedor.whatsapp}?text=${encodeURIComponent(developerMessage)}`;
 
   return (
     <footer className="site-footer is-close is-updated" id="rodape">
@@ -51,7 +53,12 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="wrap footer-bottom">
-          <p>© {new Date().getFullYear()} {empresa.nome}. {footer.rights}</p>
+          <div className="footer-credits">
+            <p>© {new Date().getFullYear()} {empresa.nome}. {footer.rights}</p>
+            <a className="footer-developer" href={developerHref} target="_blank" rel="noreferrer">
+              {footer.developerPrefix} <span>{desenvolvedor.nome}</span>
+            </a>
+          </div>
           <a href="#topo">{footer.backToTop}<ArrowUpRight size={15} aria-hidden="true" /></a>
         </div>
       </Reveal>
