@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>NPG Marcenaria</title>
+  <rect width="64" height="64" rx="12" fill="#53826d"/>
+  <!-- Optical adaptation of the NPG monogram for small browser tabs. -->
+  <g fill="none" stroke="#f3f5f3" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M14 9H50V55H14Z"/>
+    <path d="M27 9C48 9 48 37 27 37H23"/>
+    <path d="M50 26H36C15 26 15 55 36 55M50 43H39"/>
+    <path d="M7 42V23L57 43V23"/>
+  </g>
+</svg>

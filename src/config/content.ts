@@ -525,12 +525,24 @@ export const homeContent = {
       fabrica: {
         photoPlaceholder: "Foto da fábrica em breve",
         description: "Onde o projeto ganha forma, com fabricação própria, tecnologia e o cuidado da nossa equipe em cada etapa.",
-        image: null as MediaImage | null,
+        image: img(
+          "/npg/optimized/espaco-fabrica.webp",
+          "Interior da fábrica da NPG, com máquinas de marcenaria, painéis e peças em produção.",
+          941,
+          1672,
+          "55% 55%",
+        ),
       },
       escritorio: {
         photoPlaceholder: "Foto do escritório em breve",
         description: "Um espaço dedicado à conversa, às escolhas e aos detalhes que orientam cada projeto de marcenaria.",
-        image: null as MediaImage | null,
+        image: img(
+          "/npg/optimized/espaco-escritorio.webp",
+          "Escritório da NPG com mesa de reunião, cadeiras estofadas e painel de madeira iluminado.",
+          941,
+          1672,
+          "70% 66%",
+        ),
       },
     },
     mapsCta: "Abrir no mapas",
@@ -552,6 +564,7 @@ export const homeContent = {
     locationLabel: "Campo Magro - PR",
     quiz: {
       back: "Voltar",
+      instruction: "Selecione uma opção para continuar.",
       questions: [
         {
           id: "ambiente",

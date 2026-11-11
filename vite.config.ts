@@ -20,6 +20,8 @@ function htmlMeta() {
         .replaceAll("%SITE_OG_HEIGHT%", String(seo.imagemAltura))
         .replaceAll("%SITE_OG_ALT%", seo.imagemAlt)
         .replaceAll("%SITE_FAVICON%", empresa.favicon)
+        .replaceAll("%SITE_FAVICON_PNG%", empresa.faviconPng)
+        .replaceAll("%SITE_APPLE_TOUCH_ICON%", empresa.appleTouchIcon)
         .replaceAll("%SITE_CANONICAL%", seo.canonical)
         .replaceAll("%SITE_LOCALE%", seo.locale)
         .replaceAll("%SITE_HERO%", homeContent.hero.image.src);

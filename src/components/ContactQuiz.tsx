@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { ArrowRight, CaretRight } from "@phosphor-icons/react";
+import { ArrowRight } from "@phosphor-icons/react";
 import { useState } from "react";
 import { homeContent } from "../config/content";
 import { isMotionEnabled } from "../lib/design";
@@ -64,10 +64,16 @@ export function ContactQuiz() {
             exit={reduce ? undefined : { opacity: 0, y: -10 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="contact-quiz-step">
-              {step + 1} de {total}
-            </p>
+            <div className="contact-quiz-status">
+              <p className="contact-quiz-step">{step + 1} de {total}</p>
+              <div className="contact-quiz-progress" aria-hidden="true">
+                {questions.map((question, index) => (
+                  <span key={question.id} className={index <= step ? "is-complete" : undefined} />
+                ))}
+              </div>
+            </div>
             <p className="contact-quiz-prompt">{current.prompt}</p>
+            <p className="contact-quiz-instruction">{contact.quiz.instruction}</p>
             <div className="contact-quiz-options" role="group" aria-label={current.prompt}>
               {current.options.map((option) => (
                 <button
@@ -77,7 +83,7 @@ export function ContactQuiz() {
                   onClick={() => choose(option)}
                 >
                   <span>{option}</span>
-                  <CaretRight size={14} weight="light" aria-hidden="true" />
+                  <ArrowRight size={16} weight="regular" aria-hidden="true" />
                 </button>
               ))}
             </div>

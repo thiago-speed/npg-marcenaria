@@ -11,7 +11,9 @@ export const siteConfig = {
     logoNavbar: "/npg/branding/logo-npg-navbar.png",
     logoClaro: "/npg/branding/mark-light.png",
     logoLoading: "/npg/branding/logo-loading-interpolated.webp",
-    favicon: "/favicon.png",
+    favicon: "/favicon-npg.svg",
+    faviconPng: "/favicon-npg.png",
+    appleTouchIcon: "/apple-touch-icon.png",
   },
 
   contato: {

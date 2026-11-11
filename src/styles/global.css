@@ -3212,7 +3212,7 @@ footer[id] {
 }
 
 .spaces {
-  padding: clamp(2rem, 4svh, 3rem) 0;
+  padding: clamp(1.5rem, 3svh, 2rem) 0;
   background: var(--color-ivory);
   color: var(--color-ink);
 }
@@ -3224,7 +3224,7 @@ footer[id] {
   letter-spacing: -0.045em;
 }
 
-.spaces-lead { margin-bottom: 1.5rem; }
+.spaces-lead { margin-bottom: 1rem; }
 .spaces-lead p {
   max-width: 41em;
   margin: 0.65rem 0 0;
@@ -3255,7 +3255,7 @@ footer[id] {
   flex-direction: column;
   align-items: flex-start;
   min-width: 0;
-  padding: 1.25rem;
+  padding: 1rem;
 }
 .space-heading {
   display: flex;
@@ -3278,7 +3278,7 @@ footer[id] {
   font-size: 0.9rem;
   line-height: 1.45;
 }
-.space-photo { aspect-ratio: 3 / 2; overflow: hidden; }
+.space-photo { position: relative; min-width: 0; aspect-ratio: 3 / 2; overflow: hidden; }
 .space-photo-placeholder {
   display: flex;
   flex-direction: column;
@@ -3291,11 +3291,16 @@ footer[id] {
   color: var(--color-accent-strong);
   font-size: 0.85rem;
 }
-.space-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* Keep portrait image dimensions from determining the card's grid height. */
+.space-photo img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
+#location-escritorio .space-photo img {
+  transform: scale(1.2);
+  transform-origin: right center;
+}
 .space-map {
   flex-shrink: 0;
   width: 100%;
-  height: clamp(6rem, 14svh, 8rem);
+  height: clamp(5rem, 12svh, 6.5rem);
   margin-top: 0.65rem;
   min-width: 0;
   min-height: 0;
@@ -3349,7 +3354,7 @@ footer[id] {
   align-items: center;
   gap: 1.25rem;
   margin-top: 1rem;
-  padding: 1.15rem 1.25rem;
+  padding: 0.85rem 1rem;
   border-top: 1px solid color-mix(in srgb, var(--color-accent) 25%, transparent);
   background: color-mix(in srgb, var(--color-accent) 5%, var(--color-ivory));
 }
@@ -3395,9 +3400,9 @@ footer[id] {
   }
   .space-location article {
     display: grid;
-    grid-template-columns: minmax(6rem, 0.65fr) minmax(0, 1.35fr);
+    grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
   }
-  .space-photo { aspect-ratio: auto; min-height: 16rem; height: 100%; }
+  .space-photo { aspect-ratio: auto; min-height: 14rem; height: 100%; }
   .space-photo-placeholder { padding: 0.75rem; text-align: center; font-size: 0.8rem; }
 }
 
@@ -3428,7 +3433,7 @@ footer[id] {
     color: var(--color-ink);
   }
   .space-location:not(.is-active) { display: none; }
-  .space-photo { aspect-ratio: auto; height: clamp(4.5rem, 12svh, 6.5rem); }
+  .space-photo { aspect-ratio: auto; height: clamp(7rem, 20svh, 10rem); }
   .space-photo-placeholder { flex-direction: row; gap: 0.5rem; font-size: 0.8rem; }
   .space-photo-placeholder svg { width: 24px; height: 24px; }
   .space-content { min-height: 12rem; padding: 0.85rem 1rem; }
@@ -3455,7 +3460,7 @@ footer[id] {
 @media (width < 768px) and (height < 740px) {
   .spaces { padding: 1rem 0; }
   .spaces-lead p { font-size: 0.86rem; }
-  .space-photo { height: 4rem; }
+  .space-photo { height: clamp(6rem, 17svh, 8rem); }
   .space-content { min-height: 0; }
   .space-heading { display: none; }
   .space-location address { margin-top: 0; }
@@ -3644,7 +3649,7 @@ footer[id] {
 }
 
 .atmosphere {
-  padding: 4.75rem 0;
+  padding: 3.75rem 0;
   background: #53826d;
   color: #f3f5f3;
 }
@@ -3792,20 +3797,50 @@ footer[id] {
   align-items: flex-start;
 }
 
+.contact-quiz-status {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+}
+
+.contact-quiz-progress {
+  display: flex;
+  gap: 4px;
+  width: 4.5rem;
+}
+
+.contact-quiz-progress span {
+  flex: 1;
+  height: 3px;
+  background: rgb(243 245 243 / 0.18);
+}
+
+.contact-quiz-progress .is-complete {
+  background: #82af98;
+}
+
 .contact-quiz-step {
-  margin: 0 0 0.35rem !important;
-  color: rgb(243 245 243 / 0.48) !important;
+  margin: 0 !important;
+  color: rgb(243 245 243 / 0.7) !important;
   font-size: 0.72rem !important;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .contact-quiz-prompt {
-  margin: 0 0 0.55rem !important;
+  margin: 0 !important;
   max-width: 22em;
   color: #f3f5f3 !important;
   font-size: 1rem !important;
   line-height: 1.35;
+}
+
+.contact .contact-quiz-instruction {
+  margin: 0.25rem 0 0.75rem;
+  color: rgb(243 245 243 / 0.7);
+  font-size: 0.78rem;
+  line-height: 1.4;
 }
 
 .contact-quiz-recap {
@@ -3819,7 +3854,7 @@ footer[id] {
 .contact-quiz-options {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 0.9rem;
+  gap: 0.45rem;
   width: 100%;
 }
 
@@ -3830,11 +3865,12 @@ footer[id] {
   justify-content: space-between;
   gap: 0.45rem;
   width: 100%;
-  padding: 0.52rem 0;
-  border: 0;
-  border-bottom: 1px solid rgb(243 245 243 / 0.14);
-  background: transparent;
-  color: rgb(243 245 243 / 0.72);
+  min-height: 44px;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid rgb(243 245 243 / 0.24);
+  border-radius: 4px;
+  background: rgb(243 245 243 / 0.07);
+  color: #f3f5f3;
   font: inherit;
   font-size: 0.92rem;
   letter-spacing: 0.01em;
@@ -3849,7 +3885,8 @@ footer[id] {
 
 .contact-quiz-option svg {
   flex-shrink: 0;
-  opacity: 0.42;
+  color: #a6c8b5;
+  opacity: 0.9;
   transition:
     opacity 0.4s var(--ease),
     transform 0.4s var(--ease);
@@ -3859,6 +3896,17 @@ footer[id] {
 .contact-quiz-option.is-on,
 .contact-quiz-option:focus-visible {
   color: #f3f5f3;
+  background: rgb(83 130 109 / 0.25);
+  border-color: #82af98;
+}
+
+.contact-quiz-option:focus-visible {
+  outline: 2px solid #a6c8b5;
+  outline-offset: 3px;
+}
+
+.contact-quiz-option:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
 }
 
 .contact-quiz-option:hover svg,
@@ -4155,7 +4203,7 @@ footer[id] {
   }
 
   .atmosphere {
-    padding: 5.15rem 0;
+    padding: 3.75rem 0;
   }
 
   .atmosphere-grid {
@@ -4529,7 +4577,7 @@ footer[id] {
   }
 
   .atmosphere {
-    padding: calc(var(--header-h) + 1.35rem) 0 2.65rem;
+    padding: calc(var(--header-h) + 0.5rem) 0 1.75rem;
   }
 
   .atmosphere-grid {
@@ -4611,8 +4659,6 @@ footer[id] {
   .contact-quiz-option {
     min-height: 44px;
     padding: 0.42rem 0.5rem 0.42rem 0.7rem;
-    border: 1px solid rgb(243 245 243 / 0.16);
-    background: rgb(243 245 243 / 0.05);
     font-size: 0.86rem;
   }
 
@@ -4623,8 +4669,8 @@ footer[id] {
   .contact-quiz-option:hover,
   .contact-quiz-option.is-on,
   .contact-quiz-option:focus-visible {
-    background: rgb(243 245 243 / 0.12);
-    border-color: rgb(243 245 243 / 0.38);
+    background: rgb(83 130 109 / 0.25);
+    border-color: #82af98;
   }
 
   .site-footer.is-close {
