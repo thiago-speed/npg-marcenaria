@@ -43,7 +43,10 @@ export function Spaces() {
                 <article id={`location-${space.id}`} aria-labelledby={`space-${space.id}`}>
                   <div className="space-photo">
                     {details.image ? (
-                      <Photo {...details.image} />
+                      <Photo
+                        {...details.image}
+                        objectPosition={`var(--space-photo-position, ${details.image.objectPosition ?? "50% 50%"})`}
+                      />
                     ) : (
                       <div className="space-photo-placeholder">
                         <ImageSquare size={36} weight="light" aria-hidden="true" />

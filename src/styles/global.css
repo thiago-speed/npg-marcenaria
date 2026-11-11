@@ -3433,7 +3433,12 @@ footer[id] {
     color: var(--color-ink);
   }
   .space-location:not(.is-active) { display: none; }
-  .space-photo { aspect-ratio: auto; height: clamp(7rem, 20svh, 10rem); }
+  /* A taller crop preserves the room context in these portrait photos. */
+  .space-photo { aspect-ratio: 4 / 3; height: auto; }
+  #location-escritorio .space-photo {
+    --space-photo-position: 50% 52%;
+  }
+  #location-escritorio .space-photo img { transform: none; }
   .space-photo-placeholder { flex-direction: row; gap: 0.5rem; font-size: 0.8rem; }
   .space-photo-placeholder svg { width: 24px; height: 24px; }
   .space-content { min-height: 12rem; padding: 0.85rem 1rem; }
@@ -3460,7 +3465,6 @@ footer[id] {
 @media (width < 768px) and (height < 740px) {
   .spaces { padding: 1rem 0; }
   .spaces-lead p { font-size: 0.86rem; }
-  .space-photo { height: clamp(6rem, 17svh, 8rem); }
   .space-content { min-height: 0; }
   .space-heading { display: none; }
   .space-location address { margin-top: 0; }
@@ -4577,11 +4581,11 @@ footer[id] {
   }
 
   .atmosphere {
-    padding: calc(var(--header-h) + 0.5rem) 0 1.75rem;
+    padding: calc(var(--header-h) + 1.25rem) 0 3rem;
   }
 
   .atmosphere-grid {
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
   .atmosphere-copy h2,
@@ -4602,7 +4606,7 @@ footer[id] {
   }
 
   .atmosphere-media .photo-frame {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 4 / 3;
   }
 
   .atmosphere-cta {
