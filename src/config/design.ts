@@ -101,6 +101,7 @@ export const designConfig = {
     projects: true,
     materiality: true,
     execution: true,
+    architects: true,
     atmosphere: true,
     brandMark: false,
     film: false,

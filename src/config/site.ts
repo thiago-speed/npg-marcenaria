@@ -99,5 +99,6 @@ export const siteConfig = {
 export const defaultNav: NavItem[] = [
   { label: "Ambientes", href: "#projetos", section: "projects" },
   { label: "A NPG", href: "#sobre", section: "philosophy" },
+  { label: "Arquitetos", href: "#arquitetos", section: "architects" },
   { label: "Contato", href: "#espacos", section: "spaces" },
 ];

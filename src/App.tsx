@@ -5,6 +5,7 @@ import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
 import { SmoothScroll } from "./components/SmoothScroll";
 import { Atmosphere } from "./sections/Atmosphere";
+import { Architects } from "./sections/Architects";
 import { Contact } from "./sections/Contact";
 import { Execution } from "./sections/Execution";
 import { Hero } from "./sections/Hero";
@@ -37,6 +38,7 @@ export default function App() {
         {sections.atmosphere ? <Atmosphere /> : null}
         {sections.spaces ? <Spaces /> : null}
         {sections.contact ? <Contact /> : null}
+        {sections.architects ? <Architects /> : null}
       </main>
       <SiteFooter />
     </SmoothScroll>

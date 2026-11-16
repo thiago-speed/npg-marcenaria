@@ -192,6 +192,197 @@ footer[id] {
   text-wrap: pretty;
 }
 
+.architects {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(3rem, 5vw, 4.5rem) var(--page-pad);
+  background: var(--color-charcoal);
+  color: var(--color-ivory);
+  scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+
+.architects-background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.architects-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.28;
+  filter: saturate(0.35);
+}
+
+.architects-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    var(--color-charcoal),
+    rgb(18 21 26 / 0.65) 1.25rem,
+    rgb(18 21 26 / 0.08) 35%,
+    rgb(18 21 26 / 0.2) 65%,
+    var(--color-charcoal)
+  );
+}
+
+.architects-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.5rem;
+  width: min(100%, 1160px);
+  margin-inline: auto;
+}
+
+.architects-copy h2 {
+  margin: 0;
+  max-width: 16ch;
+  font-size: clamp(2rem, 2.8vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: -0.038em;
+}
+
+.architects p {
+  margin: 1rem 0 0;
+  max-width: 49ch;
+  color: var(--color-ivory);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.architects-cta .btn {
+  background: var(--color-ivory);
+  color: var(--color-charcoal);
+}
+
+.architects-cta .btn:hover {
+  background: color-mix(in srgb, var(--color-ivory) 88%, var(--color-accent));
+}
+
+.architects-cta .btn-icon {
+  background: rgb(18 21 26 / 0.1);
+}
+
+.architects .btn:focus-visible {
+  outline-color: var(--color-ivory);
+}
+
+.architects-support {
+  display: grid;
+  align-content: center;
+  gap: 1.75rem;
+  min-width: 0;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgb(243 245 243 / 0.3);
+}
+
+.architects-support h3 {
+  margin: 0;
+  color: var(--color-ivory);
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+.architects-support p {
+  margin-top: 0.5rem;
+}
+
+.architects-text-mobile {
+  display: none;
+}
+
+@media (width >= 768px) {
+  .architects-inner {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 1.75rem clamp(2.5rem, 7vw, 7rem);
+  }
+
+  .architects-support {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    padding: 0 0 0 clamp(2rem, 4vw, 4rem);
+    border-top: 0;
+    border-left: 1px solid rgb(243 245 243 / 0.3);
+  }
+
+  .architects-cta {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
+
+@media (width < 768px) {
+  .architects-text-full {
+    display: none;
+  }
+
+  .architects-text-mobile {
+    display: inline;
+  }
+
+  .architects {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .architects-inner {
+    gap: 1.5rem;
+  }
+
+  .architects-background {
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .architects-background img {
+    opacity: 0.2;
+    transform: scale(1.3);
+    transform-origin: 55% 70%;
+  }
+
+  .architects-copy h2 {
+    max-width: 13ch;
+    font-size: clamp(1.8rem, 7vw, 2.1rem);
+    line-height: 1.12;
+    text-wrap: balance;
+  }
+
+  .architects p {
+    margin-top: 0.85rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .architects-support {
+    gap: 1.25rem;
+    padding-top: 1.25rem;
+    border-top-color: rgb(243 245 243 / 0.16);
+  }
+
+  .architects-support h3 {
+    font-size: 1rem;
+  }
+
+  .architects-support p {
+    margin-top: 0.4rem;
+    color: rgb(243 245 243 / 0.85);
+  }
+
+  .architects-cta .btn {
+    width: 100%;
+    min-height: 50px;
+    justify-content: space-between;
+    padding-inline: 1rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+  }
+}
+
 .muted {
   color: var(--color-muted);
 }
@@ -3742,6 +3933,19 @@ footer[id] {
   height: min(30svh, 14.5rem);
   min-height: 0;
   border-radius: 0;
+}
+
+.contact:has(+ .architects) .contact-media .photo-frame {
+  position: relative;
+}
+
+.contact:has(+ .architects) .contact-media .photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: min(12%, 2rem);
+  background: linear-gradient(to bottom, transparent, var(--color-charcoal));
+  pointer-events: none;
 }
 
 .contact-media img {

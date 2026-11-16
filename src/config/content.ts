@@ -392,6 +392,33 @@ export const homeContent = {
     ],
   },
 
+  architects: {
+    title: "Parceria com arquitetos",
+    background: img(
+      "/npg/optimized/cozinha-ilha.webp",
+      "",
+      941,
+      1672,
+      "50% 53%",
+    ),
+    body: "Seu projeto, com o cuidado que ele pede. A NPG é parceira na execução da marcenaria, respeitando suas escolhas e cada detalhe do desenho.",
+    mobileBody: "Seu projeto, nossa parceria na execução. Marcenaria com respeito às suas escolhas e aos detalhes.",
+    items: [
+      {
+        title: "Fidelidade ao projeto",
+        body: "Da fabricação à montagem, seguimos os detalhes definidos por você para que o resultado preserve a intenção do projeto.",
+        mobileBody: "Da fabricação à montagem, seguimos os detalhes definidos por você.",
+      },
+      {
+        title: "Apoio na execução",
+        body: "Oferecemos consultoria para esclarecer dúvidas e alinhar soluções de marcenaria junto com você.",
+        mobileBody: "Consultoria para tirar dúvidas e alinhar soluções de marcenaria com você.",
+      },
+    ],
+    cta: "Conversar sobre parceria",
+    message: "Olá! Sou arquiteto(a), conheci a NPG pelo site e gostaria de conversar sobre uma parceria para a execução dos meus projetos de marcenaria.",
+  },
+
   atmosphere: {
     title: "Sob medida para o espaço.",
     text: "A NPG executa o mobiliário que o ambiente pede, com precisão de fabricação e cuidado na instalação.",

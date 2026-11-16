@@ -21,6 +21,7 @@ export type SectionKey =
   | "projects"
   | "materiality"
   | "execution"
+  | "architects"
   | "atmosphere"
   | "brandMark"
   | "film"
